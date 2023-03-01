@@ -1,0 +1,26 @@
+{
+	"dotenv import and setup": {
+		"prefix": "dotenv",
+		"body": [
+			"import dotenv from \"dotenv\";",
+			"dotenv.config();"
+		]
+	},
+	"generate controller": {
+		"prefix": "controll",
+		"body": [
+			"static $1 = async (req: Request, res: Response): Promise<Response> => {",
+			"\t\ttry {",
+			"\t\t\t$2",
+			"\t\t} catch (error: any) {",
+			"\t\t\tif (error != null && error instanceof Error) {",
+			"\t\t\t\treturn errorResponse(res, error.message, 401, error);",
+			"\t\t\t}",
+			"",
+			"\t\t\treturn errorResponse(res, 'internal server error', 500, error);",
+			"\t\t}",
+			"\t}"
+		],
+		"description": "create controller"
+	}
+}

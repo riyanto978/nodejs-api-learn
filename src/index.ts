@@ -1,15 +1,20 @@
 import express from 'express';
 
+import dotenv from "dotenv";
+import router from './routes/routes';
+dotenv.config();
+
 const app = express();
+app.use(express.json());
+app.use(router)
 
-app.get('/', (req, res) => {
-
+app.use("/", (req, res) => {
     res.send({
-        "hallo": 4
+        message: "hgallo"
     })
 })
 
-app.listen(3000, () => {
-    console.log("server init 3000");
+app.listen(process.env.APP_PORT, () => {
+    console.log(`${process.env.APP_NAME} running on port ${process.env.APP_PORT}`);
 
 });
